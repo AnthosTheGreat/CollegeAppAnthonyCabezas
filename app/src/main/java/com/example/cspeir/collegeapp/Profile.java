@@ -6,14 +6,13 @@ import java.util.Date;
  * Created by cspeir on 10/6/2017.
  */
 
-public class Profile {
+public class Profile extends ApplicantData{
     private String lastName;
     private String firstName;
     private Date mDates;
     public String getFirstName() {
         return firstName;
     }
-    private String objectId;
     private String email;
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -30,9 +29,10 @@ public class Profile {
     }
 
     public Profile(){
-        firstName = "Cnr";
-        lastName = "Spr";
+        firstName = "Jacob";
+        lastName = "Elicker";
         mDates = new Date();
+        email = "";
 
     }
     public Profile (String first, String last){
@@ -49,19 +49,6 @@ public class Profile {
         mDates = todaysDate;
     }
 
-    public String getObjectId() {
-        return objectId;
-    }
 
-    public void setObjectId(String objectId) {
-        this.objectId = objectId;
-    }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }

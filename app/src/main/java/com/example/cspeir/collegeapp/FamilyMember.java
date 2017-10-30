@@ -4,7 +4,7 @@ package com.example.cspeir.collegeapp;
  * Created by cspeir on 10/6/2017.
  */
 
-public abstract class FamilyMember {
+public abstract class FamilyMember extends ApplicantData{
     private String firstName;
     private String lastName;
     public String getFirstName() {
@@ -25,8 +25,8 @@ public abstract class FamilyMember {
         this.lastName = lastName;
     }
     public FamilyMember(){
-        firstName="Matthew";
-        lastName = "Speir";
+        firstName="Tony";
+        lastName = "Elicker";
     }
     public FamilyMember (String first, String last){
         this.firstName = first;

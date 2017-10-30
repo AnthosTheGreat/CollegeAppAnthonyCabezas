@@ -44,7 +44,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater , ViewGroup v, Bundle bundle) {
         super.onCreateView(inflater, v, bundle);
-        mProfile = new Profile("Connor", "Speir");
+        mProfile = new Profile("Jacob", "Elicker");
         SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
         email = sharedPreferences.getString(ApplicantActivity.EMAIL_PREF,null);
         if (mProfile.getEmail()==null){
@@ -79,14 +79,16 @@ public class ProfileFragment extends Fragment {
                 if ((first != null && !first.equals("")) && (last != null && !last.equals(""))) {
                     mFirstNameText.setText(first);
                     mLastNameText.setText(last);
-                }
-                String whereClause = "email = '" +email+"'";
+                    mProfile.setFirstName(first);
+                    mProfile.setLastName(last);
+
+                String whereClause = "email = '" + email + "'";
                 DataQueryBuilder queryBuilder = DataQueryBuilder.create();
                 queryBuilder.setWhereClause(whereClause);
                 Backendless.Data.of(Profile.class).find(queryBuilder, new AsyncCallback<List<Profile>>() {
                     @Override
                     public void handleResponse(List<Profile> response) {
-                        if(!response.isEmpty()){
+                        if (!response.isEmpty()) {
                             String profileId = response.get(0).getObjectId();
                             mProfile.setObjectId(profileId);
                             Log.i("ProfileFragment", profileId);
@@ -110,6 +112,7 @@ public class ProfileFragment extends Fragment {
                     }
                 });
             }
+        }
 
         });
         return rootView;
@@ -156,7 +159,7 @@ public class ProfileFragment extends Fragment {
                         @Override
                         public void handleResponse(Profile response) {
                             Log.i("ProfileFragment saved", response.toString());
-                            Toast.makeText(context, "Save to BackenLess", Toast.LENGTH_SHORT ).show();
+                            Toast.makeText(context, "Save to BackendLess", Toast.LENGTH_SHORT ).show();
                         }
 
                         @Override
@@ -173,7 +176,7 @@ public class ProfileFragment extends Fragment {
                         @Override
                         public void handleResponse(Profile response) {
                             Log.i("ProfileFragment saved", response.toString());
-                            Toast.makeText(context, "Save to BackenLess", Toast.LENGTH_SHORT ).show();
+                            Toast.makeText(context, "Save to BackendLess", Toast.LENGTH_SHORT ).show();
 
                         }
 
